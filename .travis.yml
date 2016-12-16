@@ -1,16 +1,13 @@
 language: android
 sudo: required
 jdk: oraclejdk8
-
-# Cache gradle dependencies only
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-  - "$HOME/.gradle/caches/"
-  - "$HOME/.gradle/wrapper/"
-
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
 env:
   global:
   - ANDROID_API=25
@@ -18,11 +15,12 @@ env:
   - ANDROID_BUILD_TOOLS=25.0.0
   - ANDROID_ABI=armeabi-v7a
   - ADB_INSTALL_TIMEOUT=5
-  # Encrypted store password
-  - secure: "peLr2bCeoZwoEufrfO3zDTCSoKRSC/IeyUs3YecjTZgZwR+IRztUAy9TikaTha3+XaiNANFy47STjo6HLFSo402ea/UsOIrrSjlUeUKbWJr3RRe8Zoaa75n9n2jwUWYu5ZJ2u9FDEwSzFH3E8KeB/wg8Kz6tucyAIYAQpqLLS61mwZ1yvQHZF6zB77sdY1jygkBCYG2pzHUy9wggu0Pj9xEy0zbKdJTzdL6kAbc9wP1qcT7dywvls8Fuob800nnRoL/jRgqOyol+VdzC6PMDXr6HAgtY6CLpO135TP6Xe/vs2Xrc1uq5OIgYNKfbsf+8LONQum0NRtMN4W8c1cGZknFLv/xfakb2LVoDeU5De/Hs/90M1LIasZ9lrT5e8+BAcpI/uqFBgBOS6Cv+ra686aj2V9PEIo3IAVarGbXcQcg8M72oq/BPNl6Qn+MIKIsTcRrer0yzGGYtz/AXJpbD8YMjU1zqJzzRaQgFI5Br3Un8izvN7m1oatvKXDkw5CPgYsyPUbOgSn6A2+6MUr/orqcuHOimS1R/P2G+vKzmaO8LRPwGZ00Bj7JR/qWCP1fYWB6jV7uAIJ2URM/Inus9zOhhnUNnkfDHEzLfVbGRyvd8GVbG+kxJ5suOZ2YupW/GtJNHtzhwOL6mdWLRtNHcOSFleGml4zHE4hCUQNMi5EA="
-  # Encrypted key password
-  - secure: "EJyJQdEISNsAj3Gcv+0UPLzWogZBV68agwy8rNj3CVcQ88hetR2sGOhbYmYrf31NK/hs2rKSIc6XYfC1/WI17Qy0HGYx9P4jzJzi0tVmyVeiJX0XRn3lnfYJU+QB4u85yOv1AsT10QJbxbwkmLGCMk2T6DTTJ7+dOgQEZFlFWAo8cX/rGWmafxME04tTn7fdQHXTCGj8R9+THT08npQ2rImTXIOCZyRlt+9GGXGP0qL+HmyDstLTRc4tOvU9Dtf22R5dccdtpkSBLPdC+BR5NLpLvMAavepHYI9L6KkSInWzOarGlLMKFG3ekAT3YZC1Wr0MP0z6OFgDlNJpbF25UMG9exrDq/im6e6MtTXcXOVCx8BR1s9Sme3ta42X6MW48Qn8rgXWglNjhdYnUVKnO7cznwXdgcXMOQFsIyBGnEuyiRP5q6swEBs+bn1R49oQHraEp3Z1ott74FRexi01Qx6ck0dJyf9gGzX22nT8o4t1i/i7rdIocyMs5jcwoZ6I0CtDx8bpQMDtZd20lnqMQLsWc/MszC7kR3gW7JutBdcASgDtZimopud4luQ1ze4eitdd/up20yKxRt+4aNQ1XpL3lNLvC2MA48uSlXZdWyLtnvHS4rfvpMLEOORfxngfRSa+AZgzx2MSGxcQjDw2UA0b3fVLE3eGrBUYoz6bKgU="
-
+  - secure: peLr2bCeoZwoEufrfO3zDTCSoKRSC/IeyUs3YecjTZgZwR+IRztUAy9TikaTha3+XaiNANFy47STjo6HLFSo402ea/UsOIrrSjlUeUKbWJr3RRe8Zoaa75n9n2jwUWYu5ZJ2u9FDEwSzFH3E8KeB/wg8Kz6tucyAIYAQpqLLS61mwZ1yvQHZF6zB77sdY1jygkBCYG2pzHUy9wggu0Pj9xEy0zbKdJTzdL6kAbc9wP1qcT7dywvls8Fuob800nnRoL/jRgqOyol+VdzC6PMDXr6HAgtY6CLpO135TP6Xe/vs2Xrc1uq5OIgYNKfbsf+8LONQum0NRtMN4W8c1cGZknFLv/xfakb2LVoDeU5De/Hs/90M1LIasZ9lrT5e8+BAcpI/uqFBgBOS6Cv+ra686aj2V9PEIo3IAVarGbXcQcg8M72oq/BPNl6Qn+MIKIsTcRrer0yzGGYtz/AXJpbD8YMjU1zqJzzRaQgFI5Br3Un8izvN7m1oatvKXDkw5CPgYsyPUbOgSn6A2+6MUr/orqcuHOimS1R/P2G+vKzmaO8LRPwGZ00Bj7JR/qWCP1fYWB6jV7uAIJ2URM/Inus9zOhhnUNnkfDHEzLfVbGRyvd8GVbG+kxJ5suOZ2YupW/GtJNHtzhwOL6mdWLRtNHcOSFleGml4zHE4hCUQNMi5EA=
+  - secure: EJyJQdEISNsAj3Gcv+0UPLzWogZBV68agwy8rNj3CVcQ88hetR2sGOhbYmYrf31NK/hs2rKSIc6XYfC1/WI17Qy0HGYx9P4jzJzi0tVmyVeiJX0XRn3lnfYJU+QB4u85yOv1AsT10QJbxbwkmLGCMk2T6DTTJ7+dOgQEZFlFWAo8cX/rGWmafxME04tTn7fdQHXTCGj8R9+THT08npQ2rImTXIOCZyRlt+9GGXGP0qL+HmyDstLTRc4tOvU9Dtf22R5dccdtpkSBLPdC+BR5NLpLvMAavepHYI9L6KkSInWzOarGlLMKFG3ekAT3YZC1Wr0MP0z6OFgDlNJpbF25UMG9exrDq/im6e6MtTXcXOVCx8BR1s9Sme3ta42X6MW48Qn8rgXWglNjhdYnUVKnO7cznwXdgcXMOQFsIyBGnEuyiRP5q6swEBs+bn1R49oQHraEp3Z1ott74FRexi01Qx6ck0dJyf9gGzX22nT8o4t1i/i7rdIocyMs5jcwoZ6I0CtDx8bpQMDtZd20lnqMQLsWc/MszC7kR3gW7JutBdcASgDtZimopud4luQ1ze4eitdd/up20yKxRt+4aNQ1XpL3lNLvC2MA48uSlXZdWyLtnvHS4rfvpMLEOORfxngfRSa+AZgzx2MSGxcQjDw2UA0b3fVLE3eGrBUYoz6bKgU=
+  matrix:
+  - secure: HBZNTJaAuNwC+7zKV3ox6s6c9DDxohJV6SJs4vkNokI3aoas1SZBu6ExRMo9YPCN/8qmGoQ0BKp5p/m+VhFWsgFKj0m5fbKT4dAB01s01bmHleQsdIWeiewhac3o5JF5ylACyvxOosKMZ8r6e8/NOSqm6UvvnK7ZNBcwjn04gwVCMBs5fRzluDclPcDrBGHIvtVVYd+VJ7ahxvJwo9Z0qjWHPHsxTo9T68ypSKSQ1XojZaqOjnqmhpG+hDFraIOSqjTFG9/O2zlYxKKIzga6DcijnuhURggKrgSo8aueccBzba1ICbgDz4JASUli3GtxQ6XTGd68ukoqa+8G3HW8tk3xI5Ka0oTDUnksqYjQwewF3Ix+nqR34PA8ICz26buq1323SW0kdOA3V2eEghaiK5VjRLrJK6exYwv7NlNiiLHkBJWzWfuxmQjmZ8p8CHsV4yyi06pth8Mzv9WsngBrbrEotxbK5qpKX9NuhxN2T3TdpdvTVLfOjgVeSpLEEXwo/JBJG6qfDLXLsTuj+nYi/HNSD/PH/r6nbAFclfR2m4hiQqN6xVo6GVvUkxrNxyx2wuSad12y4IZtE9qd8S1gIHCJcY+RjquKbCshLs7+zrDtksm8AvadkU0wiuPuVmeQsqQS/rePyi5t6s70oYkmpMxYfb+y4Xg91NljEtARpBs=
+  - secure: dDULUB5M3PV7/u3v2+lbP+TVpB9RcoNWU6eon7QMy/Ob6LOCfk6F6P2I5XlpJzWwsmYEPKyyE943m4QRScwYX+KKswLEPQCDdpn9ZVZ6Ygm5cNe0qggLYY3VgzxQ4B6rwoXVWcqTy9QrrU+VV1wbRTSOD45A+vKqkXo+NNsiAhJ2AO82JVhr3YU5gvk5TciKebCG9cf2oEfg/099PgR1lRImwm44P8+tnBL94svy6uvco3Fcr/j+bAmaBdh4bTckJWqiBevYj1/8wMgujc6sODcoZuCe+QVpK/KG9FY0GLi/F14dnKe9St5KHIiN5Cc5wweiWo7MotX8Jjr8lDjilXxN1HJwwLA35/0Jo/m4HTzy6DsO+h/RK5IJ7L45JCHzLw12aonXdmHACEua/eK2qrM9AHH3EAgY9QGqehJB/KR4UqutGRoXbnFzwT3JWtB4+bGzGifvpzI7H8som/S0BCjOueYHAxX7XKYLjBTJUsAcwSMbgY27+9b3InEZyXkuPIqzWoM1ZSVLwJV1wtx1PzfdgBzyoL/+DHFD9YnC1m8XcyiW/YJouhjl1ySCH+eDBLF8+yHeo7RGvO9jQKkXCy64sKRbGEM/uPLY3HmU1iq3nPj4iN/cFNWo4d0TGWUlRkz/+XWZxk4NUka3w/esI5KynjeL6bH6lOQYcSFIqkg=
+  - secure: Bz83lzixGYLlq+dqDzPQnLxaU0Nr8XviSns/xAsG1fRHN/5PsOrJqe04GYw18a2ZgapqB2MfS3e+g1NeMuc1lvSyFRfDAGJFJNrotr524UKKZtEU/cAl9ly6kSAJZ/9U2Ka1IA4sF+LpWZA7EHJw8mbjjsrsUA8RMd82wJebevsx9DQaZ2OnD0LtqK934y+wC/iHr3wJdLPaVqZW8vEzZ+6HtJUrY9mAYmljspcYjZOgboo9A8tTldr1Do3Ny0Cl0EuUQ1y5dpjEB+xHoSfVogHlSkHplzjnfJMkMCNoSESNVt9yV2E7EvWf4Ki2oHBsfTkRa3IA4eFCuYzS9DXKdjrGwlIMNyEIkdq6t0Zm5t+dc9m4nxsfOuo7Vp+sOKcjrletlJq9IuYtccdCb8gfi6D3ZYEV2OsbKGhBhEYyxZ8kHSLgq/cX75LmpNzNyhU5niwZO8IvULONeqDGTcMWyMPhJw3T3qARQiXLc+gXdJ+3v8GJcT2Vs8PkRgT5qL4Oo0ldt8katyXazALvA4xtN3y2lKiXynWFcFO6AAtmM9aO0visjWdoEXQVzpCT8XvnMumG/ICpzdYMdy2MaR+xt5Jjg3vOz38QYpiFk4TYbzBmmqPjbWpyexvvXEaY1Fxj+nl7mJfEF+W+AXZZ0UAniIy8u6QIap+BWSFhEcOyG04=
 android:
   components:
   - tools
@@ -31,50 +29,24 @@ android:
   - android-$ANDROID_API
   - android-$EMULATOR_API_LEVEL
   - extra-google-m2repository
-  - extra-android-m2repository # For design library
-  - addon-google_apis-google-19 # Google play services
+  - extra-android-m2repository
+  - addon-google_apis-google-19
   - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
   - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
-
   licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
   - google-gdk-license-.+
-
 before_install:
-- cd SampleWebApp # Navigate to project root
-- openssl aes-256-cbc -K $encrypted_d948bd61ff82_key -iv $encrypted_d948bd61ff82_iv -in keystore.jks.enc -out keystore.jks -d # Use the encrypted keystore
-
+- cd SampleWebApp
+- openssl aes-256-cbc -K $encrypted_d948bd61ff82_key -iv $encrypted_d948bd61ff82_iv
+  -in keystore.jks.enc -out keystore.jks -d
 before_script:
 - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
 - emulator -avd test -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
-
 script:
-  - ./gradlew test -PdisablePreDex --stacktrace
-  - ./gradlew connectedAndroidTest -PdisablePreDex --stacktrace
-
-# before_deploy:
-# - cp $TRAVIS_BUILD_DIR/SampleWebApp/keystore.jks $HOME
-# #- cp $TRAVIS_BUILD_DIR/.keystore $HOME
-# #- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk SampleWebApp -keystore $HOME/.keystore -storepass $storepass -keypass $keypass
-# - cd app/build/outputs/apk/
-# - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 app-release-unsigned.apk SampleWebApp -keystore $HOME/keystore.jks -storepass $storepass -keypass $keypass
-# # Verification
-# - jarsigner -verify app-release-unsigned.apk
-# - "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign -v 4 app-release-unsigned.apk SampleWebApp.apk"
-# #- "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/SampleWebApp.apk"
-
-# deploy:
-#   provider: releases
-#   file: SampleWebApp.apk
-#   skip_cleanup: true
-
-#   on:
-#     repo: abagg35/a35-waterguru-android
-#     #tags: true
-#     jdk: oraclejdk8
-
-#   api_key:
-#     secure: "e62065c38e45b94a3497e9189805ce4ae1156b33"
+- ./gradlew test -PdisablePreDex --stacktrace
+- ./gradlew connectedAndroidTest -PdisablePreDex --stacktrace
+- ./gradlew assembleRelease --stacktrace
