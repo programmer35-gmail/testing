@@ -1,10 +1,8 @@
 package com.waterguru.samplewebapp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -176,10 +174,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mWebView.setWebChromeClient(new WebChromeClient());
-        mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+        mWebView.addJavascriptInterface(new WebJavaScriptInterface(this), "Android");
         mWebView.loadUrl(getWebAddress());
     }
-    public void showWebAlert(final String message) {
+    private void showWebAlert(final String message) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -188,22 +186,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    /*//////////////////////////////////////////////////////////
-    // SCOPED CLASSES
-    *///////////////////////////////////////////////////////////
-    public class WebAppInterface {
-        Context mContext;
-
-        /** Instantiate the interface and set the context */
-        WebAppInterface(Context c) {
-            mContext = c;
-        }
-
-        /** Show a toast from the web page */
-        @JavascriptInterface
-        public void showNativeToast(String toast) {
-            Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
-        }
-    }
 }
